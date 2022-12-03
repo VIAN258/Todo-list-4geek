@@ -6,21 +6,31 @@ import React from "react";
 //create your first component
 const Input = () => {
 
-        const [input, setInput ] = React.useState('');
-        
-        const validateInput = (e) => {
+        const [input, setInput ] = React.useState({
+               tareas:''
 
-          console.log(e.key)}  
+      });
 
-          //if(input === "") alert("Writte a task");
-          //else alert("Good");}
+        const handleInputChange = (e) => {
+                console.log(e.target.value)
+                setInput({
+                        ...input,
+                        [e.target.name] :  e.target.name
+                })
+
+        }
+                
 	return (
-        <div className="input-group mb-3">
-            <input type="text" className="form-control" placeholder="Task" aria-label="Task" aria-describedby="basic-addon2" value ={input}
-            onKeyDown={e=>validateInput(e)} onChange={e=>setInput(e.target.value)}/>
-            <span className="input-group-text" id="basic-addon2">Input tasks</span>
-        </div>
         
+            <input 
+            type="text"
+            placeholder="Ingrese tarea"
+            clasName= "form-control"
+            name="tareas"
+            onChange={handleInputChange}
+            onKeyDown={e =>handleInputChange(e)}
+            ></input>
+            
 	);
 };
 
