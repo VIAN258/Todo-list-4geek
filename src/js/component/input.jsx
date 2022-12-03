@@ -5,22 +5,21 @@ import React from "react";
 
 //create your first component
 const Input = () => {
-  const [task, setTask] = React.useState("");
-  const [newTask, setNewTask] = React.useState(['']);
+  
+  const [newTask, setNewTask] = useState([]);
 
   const validate = (e) => {
     if (e.key === "Enter" && e.target.value !== "") {
-        console.log(e.target.value);
         setNewTask(newTask.concat(e.target.value));
-     // setNewTask((prev) => [...prev, e.target.value]);
-      console.log(newTask);
     }
   };
-  //const handleInputChange = (e) => {
-  // setTask(e.target.value)
-  //console.log(task)
 
-  // }
+  const deleteTask = (Task) => {
+    setNewTask(prev => {
+      prev.filter(li => li != Task)
+    })
+  }
+
   return (
     <input
       type="text"
@@ -28,7 +27,12 @@ const Input = () => {
       clasName="form-control"
       onChange={validate}
       onKeyDown={(e) => validate(e)}
-      value
+      {
+          newTask && newTask.map((task, i) => {
+          return <li key= {i} className="card-text" onClick={e => deleteTask(task)}>{task}</li>
+        })
+      }
+      
     ></input>
   );
 };
@@ -36,3 +40,4 @@ const Input = () => {
 export default Input;
 
 //crear funcion validador de input si se ingresa dato o no, usar mappara recorrido en la cre<CION DE LISTA
+// setNewTask((prev) => [...prev, e.target.value]);
