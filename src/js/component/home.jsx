@@ -1,22 +1,34 @@
 import React from "react";
-
+import { useState, useEffect } from "react";
 //include images into your bundle
-import Lists from "./lists.jsx";
-import Input from "./input.jsx";
 
 //create your first component
+
+
+
+
 const Home = () => {
-	return (
-	<div className="container">
-		
-		<Input/>
-		<Lists/>
-				
-	</div>
-	);
+
+	const [newTask, setNewTask] = useState([])
+	const validate = (e) => {
+		if(e.key ==='Enter'){
+			setNewTask(prev => [...prev, e.target.value])
+			
+			
+		}
+	}
+  return (
+    <div className="card">
+      <div className="card-body">
+		<h5>List Tasks.</h5>
+		<input type="text"  className="form-control" placeholder="Enter tasks" onKeyDown={e => validate(e)}/> 
+		{newTask.map ((newTask) => {
+              return <p>{newTask}</p>
+		})
+		}
+	  </div>
+    </div>
+  );
 };
 
 export default Home;
-
-
-
