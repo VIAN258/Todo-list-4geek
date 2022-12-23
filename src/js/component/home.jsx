@@ -23,7 +23,9 @@ const Home = () => {
 		<h5>List Tasks.</h5>
 		<input type="text"  className="form-control" placeholder="Enter tasks" onKeyDown={e => validate(e)}/> 
 		{newTask.map ((newTask) => {
-              return <p>{newTask}</p>
+              return <ul className="list-group">
+			               <li className="list-group-item">{newTask}</li>
+					 </ul>	  
 		})
 		}
 	  </div>
