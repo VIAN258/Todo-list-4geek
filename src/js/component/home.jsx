@@ -6,13 +6,14 @@ import { useState, useEffect } from "react";
 
 
 
-
+let counter =0;
 const Home = () => {
 
 	const [newTask, setNewTask] = useState([])
 	const validate = (e) => {
 		if(e.key ==='Enter'){
 			setNewTask(prev => [...prev, e.target.value])
+			counter++;
 			
 			
 		}
@@ -22,6 +23,7 @@ const Home = () => {
       <div className="card-body">
 		<h5>List Tasks.</h5>
 		<input type="text"  className="form-control" placeholder="Enter tasks" onKeyDown={e => validate(e)}/> 
+		<h4>Added tasks:{counter}</h4>
 		{newTask.map ((newTask) => {
               return <ul className="list-group">
 			               <li className="list-group-item">{newTask}</li>
