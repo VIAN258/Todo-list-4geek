@@ -16,6 +16,11 @@ const Home = () => {
 			counter++
 		}
 	}
+
+const deleteTask = (newTas) => {
+	 setNewTask (prev => { prev.filter(p => p !=newTas)})
+	 counter --
+}
   return (
     <div className="card">
       <div className="card-body">
@@ -24,9 +29,9 @@ const Home = () => {
 		<ul className="list-group">
 			<li className="list-group-item">Added tasks:  {counter<1? "No Task": counter}</li>
 		</ul>
-		{newTask.map ((newTask) => {
+		{newTask && newTask.map ((newTas,i) => {
               return <ul className="list-group">
-			               <li className="list-group-item">{newTask}</li>
+			               <li key={i} onClick ={() => deleteTask(newTas)}  className="list-group-item">{newTas}  <button type="button" class="btn-close" aria-label="Close"></button></li>
 					 </ul>	  
 		})
 		}
