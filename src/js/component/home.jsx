@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 //include images into your bundle
 
 //create your first component
@@ -14,14 +14,11 @@ const Home = () => {
 		if(e.key ==='Enter'){
 			setNewTask(prev => [...prev, e.target.value])
 			counter++
-			
-			
-			
 		}
 	}
 
 const deleteTask = (newTas) => {
-	 setNewTask (prev => {prev.filter(p => p !=newTas)})
+	 setNewTask (newTask.filter(p => p !=newTas))
 	 counter --
 }
   return (
@@ -34,7 +31,7 @@ const deleteTask = (newTas) => {
 		</ul>
 		{newTask && newTask.map ((newTas) => {
               return <ul className="list-group">
-			               <li key={newTas.toString} onClick ={() => deleteTask(newTas.toString)}  className="list-group-item">{newTas}  <button type="button" class="btn-close" aria-label="Close"></button></li>
+			               <li key={newTas.toString()} onClick ={() => deleteTask(newTas.toString())}  className="list-group-item">{newTas}  <button type="button" class="btn-close" aria-label="Close"></button></li>
 					 </ul>	  
 		})
 		}
