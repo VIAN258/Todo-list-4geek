@@ -30,22 +30,18 @@ const deleteTask = (index) => {
         <div className="card">
         <div className="card-body">
             <h5> Task List.</h5>
-			{/* Se agregaron los atributos value y onChange para que guarde 
-			el valor del input en un estado cada vez que este cambie */}
             <input  type="text" value={taskValue} className="form-control" placeholder="Enter task" onChange={(e) => setTaskValue(e.target.value)} onKeyDown={(e) => validate(e)}/>
-            <ul className="list-group" >
-				{/* Se eliminó la variable counter y se cambió por el largo del array, 
-				ya que esto cuenta automáticamente la cantidad de espacios que tiene. */}
-                <li id="first" className="list-group-item"> Added tasks:  {newTask.length<1? "No Tasks, add task": newTask.length}</li><p></p>
-            </ul>
+			<p></p>
 			<ul className="list-group">
-			{/* Aquí se modificó el map para que tomara el índice 
-			donde se encuentro el elemento de la lista para así mostrarlo y poder eliminarlo */}
             {newTask && newTask?.map ((item, index) => {
-                return <li key={index} onClick ={() => deleteTask(index)}  className="list-group-item">{item}  <button  type="button" className="btn-close" aria-label="Close"></button></li>
+                return <li key={index} onClick ={() => deleteTask(index)}  className="list-group-item">{item} <button  type="button" className="btn-close" aria-label="Close"></button></li>
             })
             }
-			</ul>
+	     	</ul>
+			<p></p>
+			<ul className="list-group" >
+                <li id="first" className="list-group-item"> Added tasks:  {newTask.length<1? "No Tasks, add task": newTask.length}</li>
+            </ul>
         </div>
         </div>
     </div>
